@@ -1,4 +1,7 @@
+
 class ErrorCalculator:
+    import math
+
     obs_var = 1.05
     pred_var = 1.95
 
@@ -9,4 +12,9 @@ class ErrorCalculator:
         self.rmse = rmse
 
     def get_residuals(self):
-        self.resid = int(self.obs_var - self.pred_var)
+        self.resid = self.obs_var - self.pred_var
+
+    def get_standardised_residuals(self):
+        self.stand_res = (self.obs_var - self.pred_var) / sqrt(self.pred_var)
+
+    def 
