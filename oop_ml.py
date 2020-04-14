@@ -28,5 +28,5 @@ class ErrorCalculator:
         self.rmse = mse(self.obs_var, self.pred_var, squared=False)
         return self.rmse
 
-    @classmethod
-    def error_summary(cls, min, max)
+    def error_summary(self):
+        self.stand_res =
