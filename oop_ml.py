@@ -29,4 +29,15 @@ class ErrorCalculator:
         return self.rmse
 
     def error_summary(self):
-        self.stand_res =
+        stand_resid_min = min(self.stand_res)
+        stand_resid_max = max(self.stand_res)
+        rmse_min = min(self.rmse)
+        rmse_max = max(self.rmse)
+        mse_min = min(self.mse)
+        mse_max = max(self.mse)
+        print(f'standard residual: {stand_resid_min}')
+        print(f'standard residual: {stand_resid_max}')
+        print(f'min rmse: {rmse_min}')
+        print(f'max rmse: {rmse_max}')
+        print(f'min mse: {mse_min}')
+        print(f'max mse: {mse_max}')
