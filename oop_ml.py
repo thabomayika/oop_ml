@@ -1,7 +1,7 @@
+from sklearn.metrics import mean_squared_error as mse
+
 
 class ErrorCalculator:
-    import math
-    from sklearn.metrics import mean_squared_error as mse
 
     obs_var = 1.05
     pred_var = 1.95
@@ -20,5 +20,3 @@ class ErrorCalculator:
 
     def get_mse(self):
         self.mse = mse(self.obs_var, self.pred_var)
-
-    
