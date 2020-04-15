@@ -1,32 +1,32 @@
 from sklearn.metrics import mean_squared_error as mse
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 class ErrorCalculator:
 
-    y = 1.05
-    y_pred = 1.95
-
-    def __init__(self, resid, stand_res, mse, rmse):
+    def __init__(self, resid, stand_res, mse, rmse, y, y_pred):
         self.resid = resid
         self.stand_res = stand_res
         self.mse = mse
         self.rmse = rmse
+        self.y_pred = y_pred
+        self.y = y
 
     def get_residuals(self):
-        self.resid = self.obs_var - self.pred_var
+        self.resid = self.y - self.y_pred
         return self.resid
 
     def get_standardised_residuals(self):
-        self.stand_res = (self.obs_var - self.pred_var) / (self.pred_var)**0.5
+        self.stand_res = (self.y - self.y_pred) / (self.y_pred)**0.5
         return self.stand_res
 
     def get_mse(self):
-        self.mse = mse(self.obs_var, self.pred_var)
+        self.mse = mse(self.y, self.y_pred)
         return self.mse
 
     def get_rmse(self):
-        self.rmse = mse(self.obs_var, self.pred_var, squared=False)
+        self.rmse = mse(self.y, self.y_pred, squared=False)
         return self.rmse
 
     def error_summary(self):
@@ -47,4 +47,24 @@ class ErrorCalculator:
 class Plotter(ErrorCalculator):
 
     def plot(self):
-        plt.hist()
+        plt.hist(self.resid)
+        plt.title('Distribution of residuals')
+        plt.xlabel('Residuals')
+        plt.ylabel('Distribution')
+        plt.show()
+        return plt.show()
+
+
+class HistogramPlotter(Plotter):
+
+    Plotter.plot()
+    super()
+
+
+class ScatterPlotter(Plotter):
+    def scatter(self):
+        plt.scatter(self.y_pred, self.resid)
+        plt.xlabel('Observed values')
+        plt.ylabel('predicted values')
+        plt.title('Observed values vs predicted values')
+    super()
