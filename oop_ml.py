@@ -10,8 +10,8 @@ class ErrorCalculator:
         self.stand_res = stand_res
         self.mse = mse
         self.rmse = rmse
-        self.y_pred = y_pred
-        self.y = y
+        self.y_pred = np.array(y_pred)
+        self.y = np.array(y)
 
     def get_residuals(self):
         self.resid = self.y - self.y_pred
