@@ -1,10 +1,11 @@
 from sklearn.metrics import mean_squared_error as mse
+import matplotlib.pyplot as plt
 
 
 class ErrorCalculator:
 
-    obs_var = 1.05
-    pred_var = 1.95
+    y = 1.05
+    y_pred = 1.95
 
     def __init__(self, resid, stand_res, mse, rmse):
         self.resid = resid
@@ -41,3 +42,9 @@ class ErrorCalculator:
         print(f'max rmse: {rmse_max}')
         print(f'min mse: {mse_min}')
         print(f'max mse: {mse_max}')
+
+
+class Plotter(ErrorCalculator):
+
+    def plot(self):
+        plt.hist()
