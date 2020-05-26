@@ -44,21 +44,31 @@ class ErrorCalculator:
         print(f'max mse: {mse_max}')
 
 
-class Plotter(ErrorCalculator):
+class Plotter:
+    def __init__(self, y, y_pred, residuals=None):
+        self.resid = residuals
+        self.y = y
+        self.y_pred = y_pred
+
+        if residuals is None:
+            self.residuals = self.run_calculations()
+        else:
+            self.residuals = residuals
+
+    def run_calculations(self):
+        resids = np.array(self.y) - np.array(self.y_pred)
+        return resids
 
     def plot(self):
         plt.hist(self.resid)
         plt.title('Distribution of residuals')
         plt.xlabel('Residuals')
         plt.ylabel('Distribution')
-        plt.show()
-        return plt.show()
 
 
 class HistogramPlotter(Plotter):
 
     Plotter.plot()
-    super()
 
 
 class ScatterPlotter(Plotter):
